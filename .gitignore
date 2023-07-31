@@ -12,3 +12,6 @@ docs/
 
 # Dotenv file
 .env
+
+# Dynamically generated
+lib/rave
