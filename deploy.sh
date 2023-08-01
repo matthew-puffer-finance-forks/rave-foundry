@@ -14,16 +14,16 @@ rave_addr=$(eval "echo '$deploy_out' | $deploy_addr")
 
 
 
-pushd ../rave/test/scripts > /dev/null
-rave_inputs=$(./raveEnclaveVerify.sh)
+pushd "../rave/test/scripts" > /dev/null
+rave_inputs=$(./runEnclaveVerify.sh)
 popd > /dev/null
 
-calldata=$(cast calldata "rave(bytes,bytes,bytes,bytes,bytes,bytes32,bytes32)" "$rave_inputs")
 
-echo $calldata
+#calldata=$(cast calldata "rave(bytes,bytes,bytes,bytes,bytes,bytes32,bytes32)" "0x$rave_inputs")
+#echo $calldata
+#exit
 
-exit
-out=$(cast send $rave_addr $calldata)
+out=$(cast send "0x$rave_addr" 0x$rave_inputs --private-key "0x2a871d0798f97d79848a013d4936a73bf4cc922c825d33c1cf7073dff6d409c6")
 echo $out
 
 
