@@ -10,21 +10,19 @@ chmod -R 777 lib/rave
 deploy_out=$(forge create --rpc-url "http://127.0.0.1:8545" --private-key "0x2a871d0798f97d79848a013d4936a73bf4cc922c825d33c1cf7073dff6d409c6" src/Main.sol:Main)
 rave_addr=$(eval "echo '$deploy_out' | $deploy_addr")
 
-
-
-
-
 pushd "../rave/test/scripts" > /dev/null
 rave_inputs=$(./runEnclaveVerify.sh)
+
+
 popd > /dev/null
 
-
-#calldata=$(cast calldata "rave(bytes,bytes,bytes,bytes,bytes,bytes32,bytes32)" "0x$rave_inputs")
-#echo $calldata
-#exit
-
-out=$(cast send "0x$rave_addr" 0x$rave_inputs --private-key "0x2a871d0798f97d79848a013d4936a73bf4cc922c825d33c1cf7073dff6d409c6")
+out=$(cast call "0x$rave_addr" 0x$rave_inputs --private-key "0x2a871d0798f97d79848a013d4936a73bf4cc922c825d33c1cf7073dff6d409c6")
 echo $out
+
+exit
+
+
+
 
 
 #Deployer: 0xa0Ee7A142d267C1f36714E4a8F75612F20a79720
