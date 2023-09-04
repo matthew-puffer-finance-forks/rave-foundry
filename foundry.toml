@@ -1,6 +1,6 @@
 [profile.default]
 src = "src"
 out = "out"
-libs = ["lib"]
+libs = ["lib/rave/src/ASN1Decode.sol:NodePtr:0x1230000000000000000000000000000000000abc", "lib/rave/src/ASN1Decode.sol:Asn1Decode:0x1230000000000000000000000000000000000abd.", "lib", ]
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config
